@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+faceSpy - A Facebook employee enumerator
+ # This script enumerates employees from any organization 
+ # using Facebook. Please note that this will not harvest all 
+ # employees within a given organization.
+ #
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with this program. If not, see <http://www.gnu.org/licenses/>.
+ #
+ # Author:  David GL
+ # Contact: @nan0byt3
+ # Version: 1.0
+ # Date:    2016-07-21
+ -->
+<html>
+  <head>
+    <title>faceSpy's Popup</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+      }
+      a.export, a.export:visited {
+        text-decoration: none;
+        color:#000;
+        background-color:#ddd;
+        border: 1px solid #ccc;
+        padding:2px;
+      }
+      body {
+        min-width:160px;
+      }
+      
+    </style>
+    <script type="text/javascript" src="jquery.min.js"></script> 
+    <script type="text/javascript" src="popup.js"></script>
+    <!--
+      - JavaScript and HTML must be in separate files: see Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+  </head>
+  <body>
+  Company Name <input type="text" id="txtcompany" placeholder="Company Name" autofocus>
+  <img width="19" height="14" title='Name of the company whose employees to search for. Example: "Acme"' src="qmrk.png"><br>
+  Domain name <input type="text" id="txtdomain" placeholder="Domain Name" onfocus="arroba(this)">
+   <img width="19" height="14" title='@domain to construct the email addresses. Example: "@acme.com"' src="qmrk.png"><br>
+  <!--<input type="checkbox" name="getfriends" value="1">Add as friends<br>-->
+  Email format
+  <select id="selformat">
+    <option value="0">first.last</option>
+    <option value="1">f.last</option>
+    <option value="2">first_last</option>
+  </select><img width="19" height="14" title='Defines the format of the email address. Example: John Smith f.last => j.smith@acme.com' src="qmrk.png">
+  <input type="submit" id="btnGO" value="GO">
+  <!--<a href="#" class="export">Export to CSV</a>-->
+  </body>
+</html>
+
