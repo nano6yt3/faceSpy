@@ -1,10 +1,14 @@
 $(document).ready(function(){
     $("#btnGO").click(function(){
     
+    //alert($('#txtcompany').val());
     //alert($('#txtdomain').val());
     //alert($('#selformat').val());
     
-       if (validation) {
+       if (($('#txtcompany').val() ==='') || ($('#txtdomain').val()=="@")) { 
+           $('#txtcompany').focus();
+           alert('Data is missing.');
+       } else {
        
 			  //var newURL = "https://www.facebook.com/search/218052195602/employees/present";
 			  //var newURL = "https://www.facebook.com/search/top/?q=People who work at ";
@@ -29,22 +33,8 @@ $(document).ready(function(){
 			  
 		} //validation	  
     });
+
 });
-
-
-function validation(){
-   if ($('#txtcompany').val()=='') { 
-       $('#txtcompany').focus();
-       alert('The value for the Company is missing.');
-       return false;
-   }
-   return true;
-}
-
-function arroba(x){
- x.value = "@";
-}
-	
 	
 	
 	

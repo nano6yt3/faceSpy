@@ -20,8 +20,8 @@ faceSpy - A Facebook employee enumerator
  #
  # Author:  David GL
  # Contact: @nan0byt3
- # Version: 1.0
- # Date:    2016-07-21
+ # Version: 1.1
+ # Date:    2019-03-05
  -->
 <html>
   <head>
@@ -60,10 +60,10 @@ faceSpy - A Facebook employee enumerator
      -->
   </head>
   <body>
-  Company Name <input type="text" id="txtcompany" placeholder="Company Name" autofocus>
+  Company Name <input type="text" id="txtcompany" placeholder="Company Name" value="" autofocus>
   <img width="19" height="14" title='Name of the company whose employees to search for. Example: "Acme"' src="qmrk.png"><br>
-  Domain name <input type="text" id="txtdomain" placeholder="Domain Name" onfocus="arroba(this)">
-   <img width="19" height="14" title='@domain to construct the email addresses. Example: "@acme.com"' src="qmrk.png"><br>
+  Domain name <input type="text" id="txtdomain" placeholder="Domain Name" value="@">
+   <img width="19" height="14" title='@domain to construct the email addresses. Example: "acme.com => @acme.com". Default = companyname.com' src="qmrk.png"><br>
   <!--<input type="checkbox" name="getfriends" value="1">Add as friends<br>-->
   Email format
   <select id="selformat">
@@ -71,7 +71,8 @@ faceSpy - A Facebook employee enumerator
     <option value="1">f.last</option>
     <option value="2">first_last</option>
   </select><img width="19" height="14" title='Defines the format of the email address. Example: John Smith f.last => j.smith@acme.com' src="qmrk.png">
-  <input type="submit" id="btnGO" value="GO">
+  <br>
+  <hr><input type="submit" id="btnGO" value="GO">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="1">v1.1</font>
   <!--<a href="#" class="export">Export to CSV</a>-->
   </body>
 </html>

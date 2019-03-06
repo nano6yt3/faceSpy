@@ -55,7 +55,7 @@ function unbindAutoscroll() {
 	
 function bindAutoscroll() {
 		setCookie(true);
-		changeHeightInterval = setInterval(handleScrolling, 200);
+		changeHeightInterval = setInterval(handleScrolling, 100);
 	}
 
 function unbindAutoscroll() {
@@ -73,14 +73,14 @@ function isCookie() {
 	
 function handleScrolling() {
 		if(isHeightChanged()) {
-		    //console.log('scrolling');
+		    console.log('scrolling');
 			$(document).scrollTop($(document).height());
 		} else {  
-		         //console.log('Stopping Scroll ...');
+		         console.log('Stopping Scroll ...');
 		         var found_EoR = $('div:contains("End of Results")');
 		         if (found_EoR.length) {
-		            //console.log('End of Results was found');
-		            //console.log('"changeHeightInterval" in handlecrolling: '+changeHeightInterval);
+		            console.log('End of Results was found');
+		            console.log('"changeHeightInterval" in handlecrolling: '+changeHeightInterval);
 		            
 		            if (! alreadyParsed && isCookie()) {
 		               unbindAutoscroll();
@@ -90,7 +90,6 @@ function handleScrolling() {
 		          }  
 		        } 
 	};
-	
 	
  function makeTable(container, data) {
     var tabla = $("<table/>").addClass('CSSTableGenerator');
@@ -144,40 +143,51 @@ function handleScrolling() {
 		
 function GetInfo(){
       console.clear();
-      var line_arr = [];  
-      
+      var name_arr = [];
+      var email_arr = [];   
       var data = [["Full Name", "Email Address", "Job Title","Lives in"]]; //headers
-            
+      var job = ''; 
+      //var livesin = '';   
        
-      $("._5d-5" ).each(function( index ) {
-          line_arr.push($(this).text() +' : '+GetEmail($(this).text(),domain,email_format));
-          data.push([$(this).text(),GetEmail($(this).text(),domain,email_format),"",""]);
-          
+      //$("._5d-5" ).each(function( index ) {
+      //Looking for the name
+      $("._32mo" ).each(function( index ) {
+          //console.log('<a class="_32mo" is '+$(this).text());
+          name_arr.push($(this).text());
+          email_arr.push(GetEmail($(this).text(),domain,email_format));
+          //data.push([$(this).text(),GetEmail($(this).text(),domain,email_format),"",""]);                 
       });
       
-      //Looking for Job Positions and "Live in"
-      line_index = 0;       
-      $("._52eh" ).each(function( index ) {
+      //Looking for Job Positions and "Live in"    
+      var line_index = 0;          
+      $("._pac" ).each(function( index ) {
          LineToPrint = '';
-      
+         
+         //console.log('<a class="_pac" is '+$(this).text());
+         //console.log(line_arr[line_index]+' : ' + $(this).text());
+         
          if(($(this).text().indexOf(' at ') != -1) && ($(this).text().indexOf('Studied ') == -1) && ($(this).text().indexOf('Studies ') == -1)) {    
-            //console.log(line_arr[line_index]+' : ' + $(this).text());
-            LineToPrint = line_arr[line_index]+' : ' + $(this).text();
+            //console.log("line_arr is "+line_arr[line_index]+' : ' + $(this).text());
+            //LineToPrint = line_arr[line_index]+' : ' + $(this).text();
             //update job title
-            data[line_index][2] = $(this).text();
-            line_index ++;  
+            //data[line_index][2] = $(this).text();
+            job = $(this).text();
+            //line_index ++;  
           } //End of Job Positions
           
-
-          if($(this).text().indexOf('Lives in ') != -1) { 
-            LineToPrint = LineToPrint + ' : ' + $(this).text();
-            data[line_index][3] = $(this).text();
-            //console.log('Printing live in > '+$(this).text());
-          }//End of "Lives in"
           
-          if (LineToPrint != '') console.log(LineToPrint);          
+         /* if($(this).text().indexOf('Lives in ') != -1) { 
+            LineToPrint = LineToPrint + ' : ' + $(this).text();
+            //data[line_index][3] = $(this).text();
+            livesin = $(this).text();
+            //console.log('Printing live in > '+$(this).text());
+          }//End of "Lives in"          
+          data.push([name_arr[line_index],job_arr[line_index],job,livesin]);  */
+          
+          data.push([name_arr[line_index],email_arr[line_index],job]);
+          console.log("Line is "+name_arr[line_index]+','+email_arr[line_index],+','+job); 
+          line_index ++;                    
       });
-      
       
       console.log('Create table');                
          var faceSpyTable = makeTable($(document.body), data);              
