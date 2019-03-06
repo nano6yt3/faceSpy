@@ -12,7 +12,7 @@ It follows the same idea of [InSpy] (https://github.com/gojhonny/InSpy) by Jonat
 ## Installation
 -----
 
-Download the packed extension [here] (https://github.com/nano6yt3/faceSpy/blob/master/faceSpy.crx)
+Download the packed extension (https://github.com/nano6yt3/faceSpy/releases/download/1.1/faceSpy.v.1.1.crx)
 
 Visit [chrome://extensions] (chrome://extensions)
 
@@ -20,7 +20,7 @@ Drag & Drop the `faceSpy.crx` file into Google Chrome.
 
 ## Output
 -----
-faceSpy automatically generates a csv file.
+faceSpy automatically generates a csv file once it is done loading and parsing all the data.
 
 ## Requirement
 -----
